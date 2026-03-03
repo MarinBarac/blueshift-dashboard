@@ -15,9 +15,9 @@
     "connect_wallet": "Kết nối ví"
   },
   "lessons": {
-    "title": "Chọn một khóa học để bắt đầu",
-    "subtitle": "Chào mừng",
-    "subtitle_returning": "Chào mừng trở lại",
+    "title": "Các khóa học Solana - Anchor, Rust & TypeScript",
+    "subtitle": "Các khóa học",
+    "subtitle_returning": "Chọn khóa học để tiếp tục học",
     "title_returning": "Tiếp tục khóa học",
     "get_started": "Bắt đầu",
     "continue_learning": "Tiếp tục học",
@@ -46,7 +46,7 @@
     "explore_more_paths": "Khám phá thêm lộ trình"
   },
   "paths": {
-    "title": "Chọn lộ trình học tập của bạn",
+    "title": "Lộ trình học lập trình Solana",
     "subtitle": "Lộ trình",
     "learning_path": "Lộ trình học",
     "get_started": "// Tuân theo lộ trình học tập được thiết lập sẵn",

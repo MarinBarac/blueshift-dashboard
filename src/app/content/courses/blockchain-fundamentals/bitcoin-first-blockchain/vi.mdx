@@ -1,0 +1,91 @@
+import { ArticleSection } from "../../../../components/ArticleSection/ArticleSection";
+
+# Bitcoin hoạt động thế nào
+
+Bitcoin đã chứng minh rằng blockchain hoạt động trong thực tế. Nhưng nó được thiết kế cho một mục đích duy nhất: chuyển tiền mà không cần ngân hàng. Mỗi quyết định về thiết kế đều phản ánh sự tập trung vào điểm duy nhất này.
+
+Bitcoin hoạt động như thế nào? Bitcoin đã giải quyết vấn đề chi tiêu hai lần và tạo ra tiền kỹ thuật số mà không cần cơ quan trung ương bằng cách sử dụng công nghệ blockchain. Thiết kế blockchain của Bitcoin tối ưu hóa cho bảo mật và phi tập trung hơn là tốc độ và tính linh hoạt.
+
+<ArticleSection name="Triết lý thiết kế của Bitcoin" id="bitcoin-design-philosophy" level="h2" />
+
+Bitcoin không được thiết kế để trở thành một máy tính đa năng. Nó được xây dựng để giải quyết một vấn đề cụ thể: tạo ra tiền kỹ thuật số hoạt động mà không cần ngân hàng hoặc chính phủ.
+
+Bitcoin ưu tiên bảo mật và phi tập trung hơn là thông lượng. Mỗi quyết định về mặt thiết kế đều xuất phát từ ưu tiên này.
+
+**Thời gian khối là 10 phút:** Bitcoin tạo ra một khối mỗi 10 phút. Thời gian này không phải ngẫu nhiên. Tạo các khối nhanh hơn sẽ gây ra các phân tách mạng, khi mà các thợ đào làm việc trên các phiên bản blockchain khác nhau vì các khối có thể lan truyền chậm hơn so với việc tạo ra các khối mới. Tạo các khối chậm hơn sẽ làm chậm quá trình xác nhận quá nhiều lần trong việc sử dụng thực tế. 10 phút cân bằng những mối quan tâm này.
+
+**Ngôn ngữ lập trình hạn chế:** Bitcoin bao gồm một ngôn ngữ lập trình đơn giản cho các điều kiện cơ bản như ví đa chữ ký và khóa thời gian. Ngôn ngữ này được thiết kế với hạn chế—nó không có vòng lặp và các phép toán phức tạp. Điều này ngăn ngừa lỗi và giảm khả năng bị tấn công, nhưng đồng nghĩa với việc Bitcoin không thể chạy các ứng dụng phức tạp.
+
+**Kích thước khối nhỏ:** Các khối Bitcoin bị giới hạn khoảng 1 megabyte. Điều này giữ cho kích thước blockchain có thể quản lý được, cho phép nhiều người chạy các nút đầy đủ và xác minh chuỗi một cách độc lập. Đổi lại là thông lượng thấp: Bitcoin xử lý khoảng 7 giao dịch mỗi giây.
+
+Những lựa chọn này ưu tiên bảo mật và phi tập trung. Bitcoin hy sinh tốc độ và tính linh hoạt để duy trì sự an toàn và khả năng truy cập cho bất kỳ ai muốn xác minh giao dịch một cách độc lập.
+
+<ArticleSection name="Mô hình UTXO" id="utxo-model" level="h2" />
+
+Bitcoin không theo dõi số dư tài khoản như các ngân hàng. Thay vào đó, nó theo dõi từng "đồng tiền" riêng lẻ bằng cách sử dụng UTXO (Unspent Transaction Outputs), hoạt động giống như tiền mặt vật lý.
+
+Bạn có ba tờ 20 đô la trong ví và muốn mua một món đồ trị giá 35 đô la. Bạn không thể chia nhỏ một tờ 20 đô la, vì vậy bạn đưa cho người thu ngân hai tờ (40 đô la) và nhận lại 5 đô la tiền thừa. Bitcoin hoạt động chính xác như vậy.
+
+Giả sử Alice đã nhận bitcoin trong ba giao dịch riêng biệt:
+- UTXO #1: 0.5 BTC (từ Bob)
+- UTXO #2: 0.3 BTC (từ Carol)
+- UTXO #3: 0.8 BTC (từ Dave)
+
+"Số dư" của Alice là 1.6 BTC, nhưng không có một tài khoản duy nhất lưu trữ con số này. Thay vào đó, blockchain ghi lại ba UTXO riêng biệt mà Alice có thể chi tiêu.
+
+Khi Alice muốn gửi 1.0 BTC cho Eve, cô phải:
+1. Chọn các UTXO có tổng ít nhất 1.0 BTC (cô chọn UTXO #1 và #3, tổng cộng 1.3 BTC)
+2. Tạo một giao dịch nơi cô gửi 1.0 BTC cho Eve và 0.3 BTC trả lại cho chính mình như tiền thừa
+3. Ký giao dịch bằng khóa riêng của cô để chứng minh cô sở hữu các UTXO đầu vào
+
+Giao dịch tiêu thụ các UTXO #1 và #3 (chúng hiện đã "được chi tiêu") và tạo ra hai UTXO mới: một cho Eve và một UTXO tiền thừa cho Alice.
+
+Vì mỗi UTXO chỉ có thể được chi tiêu một lần, các giao dịch sử dụng các UTXO khác nhau không xung đột. Các thợ đào có thể xác minh hàng nghìn giao dịch cùng lúc mà không lo về việc chi tiêu gấp đôi, miễn là mỗi giao dịch tham chiếu các UTXO khác nhau. Không có tài khoản toàn cục nào tiết lộ tổng số dư của bạn. Bitcoin của bạn được phân tán trên nhiều UTXO, khiến cho việc xác định tổng tài sản của bạn trở nên khó khăn hơn đối với những người theo dõi. Mỗi UTXO có thể được liên kết với một địa chỉ khác nhau, che giấu mô hình sở hữu.
+
+Mỗi giao dịch có thể được xác minh độc lập bằng cách kiểm tra rằng các UTXO đầu vào tồn tại và chưa được chi tiêu, và các chữ ký số là hợp lệ. Bạn không cần duy trì trạng thái tài khoản phức tạp hoặc lo lắng về thứ tự của các giao dịch ảnh hưởng đến số dư. Một giao dịch hoặc thành công hoàn toàn (tiêu thụ tất cả các đầu vào và tạo tất cả các đầu ra) hoặc thất bại hoàn toàn. Không có rủi ro về trạng thái một phần, khi một số tiền bị trừ nhưng không được chuyển.
+
+<ArticleSection name="Đào và phần thưởng khối" id="mining-block-rewards" level="h2" />
+
+Các thợ đào Bitcoin cạnh tranh để giải các bài toán. Thợ đào đầu tiên tìm ra giải pháp hợp lệ sẽ đề xuất khối tiếp theo và nhận phần thưởng.
+
+**Phần thưởng khối:** Thợ đào thành công trong việc khai thác một khối sẽ nhận được các bitcoin mới tạo ra. Phần thưởng này bắt đầu từ 50 BTC mỗi khối và giảm một nửa sau mỗi 210,000 khối (khoảng 4 năm). Phần thưởng hiện tại là 3.125 BTC mỗi khối.
+
+**Halving:** Mỗi 210,000 khối, phần thưởng khối sẽ giảm một nửa. Điều này tạo ra một lịch trình cung cấp dự đoán được. Tổng cung Bitcoin sẽ đạt 21 triệu đồng vào khoảng năm 2140. Sau đó, các thợ đào chỉ kiếm được phí giao dịch.
+
+**Phí giao dịch:** Ngoài phần thưởng khối, các thợ đào còn thu phí giao dịch từ người dùng. Khi bạn gửi một giao dịch bitcoin, bạn chỉ định một khoản phí. Các thợ đào ưu tiên các giao dịch có phí cao hơn vì họ kiếm được nhiều hơn. Khi phần thưởng khối giảm, phí giao dịch sẽ trở thành nguồn thu chính của các thợ đào.
+
+**Điều chỉnh độ khó:** Mỗi 2,016 khối (khoảng hai tuần), Bitcoin sẽ tính toán lại độ khó khai thác. Nếu các khối được tạo ra nhanh hơn trung bình 10 phút, độ khó sẽ tăng. Nếu các khối được tạo ra chậm hơn, độ khó sẽ giảm. Sự tự điều chỉnh này duy trì việc sinh ra khối ổn định bất kể có bao nhiêu sức mạnh khai thác tồn tại.
+
+Việc đào bảo vệ mạng bằng cách làm cho các cuộc tấn công trở nên tốn kém trong khi phân phối các đồng tiền mới mà không cần một cơ quan trung ương để phân bổ chúng.
+
+<ArticleSection name="Điều Bitcoin làm tốt" id="what-bitcoin-does-well" level="h2" />
+
+Bitcoin xuất sắc như trong vai trò kho lưu trữ giá trị và hệ thống thanh toán chống kiểm duyệt.
+
+**Kho lưu trữ giá trị:** Nguồn cung cố định của Bitcoin (tối đa 21 triệu đồng) và bảo mật đã được chứng minh khiến nó trở thành vàng kỹ thuật số. Không ai có thể tạo ra nhiều bitcoin hơn ngoài lịch trình của giao thức. Không chính phủ nào có thể tịch thu bitcoin nếu bạn bảo vệ khóa riêng của mình đúng cách. Mạng lưới đã hoạt động liên tục từ năm 2009 mà không có thời gian ngừng hoạt động hoặc không có các cuộc tấn công thành công nào.
+
+**Kháng kiểm duyệt:** Không ai có thể chặn giao dịch của bạn nếu bạn trả đủ phí. Các nút Bitcoin được phân phối trên toàn cầu. Việc tắt Bitcoin sẽ yêu cầu tắt internet ở mọi quốc gia cùng một lúc. Các cá nhân ở các quốc gia có tiền tệ không ổn định hoặc chính phủ độc tài có thể lưu trữ và chuyển giá trị mà không cần sự cho phép.
+
+**Đơn giản:** Chức năng hạn chế của Bitcoin là một tính năng. Giao thức đơn giản để hiểu, đã được kiểm tra và xác minh. Ít tính năng hơn có nghĩa là ít lỗi hơn và khả năng bị tấn công nhỏ hơn. Sự đơn giản này góp phần vào độ tin cậy và bảo mật của Bitcoin.
+
+**Lịch sử đã được chứng minh:** Bitcoin là blockchain hoạt động lâu nhất. Nó đã vượt qua nhiều chu kỳ thị trường, nhiều lần tấn công và vô số dự đoán thất bại. Sự bền vững này tạo niềm tin rằng hệ thống hoạt động đúng như thiết kế.
+
+<ArticleSection name="Điều Bitcoin không làm được" id="what-bitcoin-doesnt-do" level="h2" />
+
+Các lựa chọn thiết kế của Bitcoin tạo ra những hạn chế.
+
+**Thông lượng thấp:** Bitcoin xử lý khoảng 7 giao dịch mỗi giây. Visa xử lý 65,000 giao dịch mỗi giây. Điều này làm cho Bitcoin không thực tế cho các giao dịch hàng ngày ở quy mô lớn. Phí giao dịch tăng vọt trong các giai đoạn sử dụng cao.
+
+**Không có hợp đồng thông minh:** Ngôn ngữ lập trình của Bitcoin không thể triển khai logic phức tạp. Bạn không thể xây dựng các giao thức cho vay, sàn giao dịch phi tập trung hoặc các tổ chức tự trị trên lớp cơ sở của Bitcoin. Giao thức chỉ hỗ trợ các điều kiện chuyển cơ bản.
+
+**Trạng thái thống nhất chậm:** Giao dịch mất 10 phút để xác nhận lần đầu và thường yêu cầu sáu xác nhận (60 phút) để được coi là trạng thái thống nhất cuối cùng. Điều này là quá chậm cho các giao dịch tại điểm bán hoặc các chuyển khoản nhạy cảm về thời gian.
+
+**Tiêu thụ năng lượng cao:** Bằng chứng công việc yêu cầu tiêu thụ điện năng khổng lồ. Việc khai thác Bitcoin sử dụng nhiều điện năng hàng năm hơn một số quốc gia. Chi phí môi trường này khiến các nhà phê bình lo ngại và giới hạn nơi khai thác có thể hoạt động có lợi.
+
+Các ưu tiên thiết kế của Bitcoin tạo ra những hạn chế này. Bảo mật và phi tập trung đòi hỏi những đánh đổi này, khiến Bitcoin hoạt động như vàng kỹ thuật số thay vì một mạng lưới thanh toán có thông lượng cao.
+
+<ArticleSection name="Di sản của Bitcoin" id="bitcoin-legacy" level="h2" />
+
+Các lựa chọn thiết kế của Bitcoin—[mô hình UTXO](#utxo-model), [đồng thuận bằng Bằng chứng Công việc](/vi/courses/blockchain-fundamentals/achieving-consensus#proof-of-work), ngôn ngữ lập trình hạn chế, điều chỉnh tham số thận trọng—tối ưu hóa cho bảo mật và khả năng chống chịu. Hàng nghìn người lạ có thể duy trì một sổ cái chung mà không cần tin tưởng lẫn nhau hoặc dựa vào các trung gian. [Mô hình bảo mật kinh tế](/vi/courses/blockchain-fundamentals/achieving-consensus#economic-security) điều chỉnh các động lực để duy trì tính toàn vẹn của mạng lưới.
+
+Bitcoin tối ưu hóa cho bảo mật hơn là linh hoạt. [Ethereum](/vi/courses/evolution-programmable-blockchains/ethereum-programmable-money) đã thực hiện bước tiếp theo và biến blockchain từ chỉ dùng để thanh toán thành tiền có thể lập trình được.

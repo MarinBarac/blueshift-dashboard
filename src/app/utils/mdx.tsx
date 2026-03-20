@@ -7,6 +7,7 @@ import { Icon } from "@blueshift-gg/ui-components";
 import IDE from "@/app/components/TSChallengeEnv/IDE";
 import { Requirement } from "@/app/components/Challenges/Requirement";
 import { RequirementList } from "@/app/components/Challenges/RequirementList";
+import { FurtherReading } from "@/app/components/FurtherReading";
 import { SafeMdxRenderer } from "safe-mdx";
 import { mdxParse } from "safe-mdx/parse";
 import { getSingletonHighlighter } from "@/lib/shiki/highlighter";
@@ -52,6 +53,7 @@ export async function renderSafeMdx(compiled: CompiledMDX) {
         RequirementList,
         Requirement,
         AnchorDiscriminatorCalculator,
+        FurtherReading,
         blockquote: ({ children }: { children: React.ReactNode }) => (
           <blockquote className="bg-brand-primary/5 flex items-start gap-x-2 py-4 px-6">
             <Icon
@@ -63,6 +65,14 @@ export async function renderSafeMdx(compiled: CompiledMDX) {
               {children}
             </div>
           </blockquote>
+        ),
+        table: ({
+          children,
+          ...props
+        }: React.ComponentPropsWithoutRef<"table">) => (
+          <div className="w-full overflow-x-auto custom-scrollbar min-w-0">
+            <table {...props}>{children}</table>
+          </div>
         ),
       }}
       renderNode={(node) => {

@@ -1,8 +1,9 @@
 {
   "metadata": {
-    "title": "Blueshift",
-    "description": "Learn how to write your own on-chain programs from the top instructors in the Solana ecosystem.",
-    "keywords": "Solana, Blueshift, learn, qualification, vault, escrow, AMM, native, pinocchio, quantum, SPL token"
+    "title": "Blueshift | Learn Solana Development - Free Courses & Tutorials",
+    "description": "Master Solana development with free courses in Anchor, Rust, and TypeScript. Build DeFi protocols, NFTs, and smart contracts with hands-on challenges.",
+    "keywords": "Solana, Blueshift, learn, qualification, vault, escrow, AMM, native, pinocchio, quantum, SPL token",
+    "coursesTitle": "Solana Development Courses | Anchor, Rust & TypeScript | Blueshift"
   },
   "header": {
     "lessons": "Lessons",
@@ -14,7 +15,7 @@
     "connect_wallet": "Connect Wallet"
   },
   "lessons": {
-    "title": "Take on individual courses",
+    "title": "Solana Courses - Anchor, Rust & TypeScript",
     "subtitle": "Courses",
     "subtitle_returning": "Take on individual courses",
     "title_returning": "Jump back into a course",
@@ -38,10 +39,14 @@
     "skip_lesson_divider_title": "Or skip to the challenge",
     "skip_lesson": "Skip Lesson",
     "lesson_completed": "Congrats, you've finished this course!",
-    "view_other_courses": "View Other Courses"
+    "view_other_courses": "View Other Courses",
+    "explore_more_courses": "Explore More Courses",
+    "next_unit": "Next Unit",
+    "path_completed": "Congrats, you've finished this path!",
+    "explore_more_paths": "Explore More Paths"
   },
   "paths": {
-    "title": "Choose your learning path",
+    "title": "Solana Development Learning Paths",
     "subtitle": "Paths",
     "learning_path": "Learning Path",
     "get_started": "// Follow a structured learning journey",
@@ -62,6 +67,10 @@
     "progress": "Progress",
     "empty_title": "No paths found",
     "empty_description": "Try changing your filters to see learning paths here.",
+    "introduction-to-blockchain-and-solana": {
+      "title": "Introduction to Blockchain and Solana",
+      "description": "Start from zero. Learn how blockchains work, why Solana can process thousands of TPS, and what makes Proof of History revolutionary."
+    },
     "solana-developer-foundations": {
       "title": "Solana Developer Foundations",
       "description": "Start your Solana journey with blockchain fundamentals, tokens, and NFTs."
@@ -97,6 +106,10 @@
     "payments-and-commerce": {
       "title": "Payments & Commerce",
       "description": "Build payment solutions using Solana Pay and token infrastructure."
+    },
+    "solana-mobile-mastery": {
+      "title": "Solana Mobile Mastery",
+      "description": "Build native Solana mobile apps with React Native, Mobile Wallet Adapter, and publish to production."
     }
   },
   "perks": {
@@ -120,7 +133,8 @@
     "rust": "Rust",
     "typescript": "Typescript",
     "assembly": "Assembly",
-    "general": "General"
+    "general": "General",
+    "mobile": "Mobile"
   },
   "ChallengeCenter": {
     "title": "Complete to Earn NFTs & Perks",
